@@ -152,6 +152,54 @@ const validateAcceptInvitation = [
   handleValidationErrors
 ];
 
+/**
+ * Validation rules for email requests (auth emails)
+ */
+const validateEmailRequest = [
+  body('email')
+    .trim()
+    .notEmpty().withMessage('Email is required')
+    .isEmail().withMessage('Invalid email format')
+    .normalizeEmail(),
+
+  body('name')
+    .optional()
+    .trim()
+    .isLength({ min: 2, max: 100 }).withMessage('Name must be between 2 and 100 characters'),
+
+  body('resetToken')
+    .optional()
+    .trim()
+    .notEmpty().withMessage('Reset token cannot be empty'),
+
+  body('resetUrl')
+    .optional()
+    .trim()
+    .isURL().withMessage('Invalid reset URL'),
+
+  body('verificationToken')
+    .optional()
+    .trim()
+    .notEmpty().withMessage('Verification token cannot be empty'),
+
+  body('verificationUrl')
+    .optional()
+    .trim()
+    .isURL().withMessage('Invalid verification URL'),
+
+  body('role')
+    .optional()
+    .trim()
+    .isLength({ max: 50 }).withMessage('Role must not exceed 50 characters'),
+
+  body('dashboardUrl')
+    .optional()
+    .trim()
+    .isURL().withMessage('Invalid dashboard URL'),
+
+  handleValidationErrors
+];
+
 module.exports = {
   validateCreateInvitation,
   validateListInvitations,
@@ -159,5 +207,6 @@ module.exports = {
   validateResendInvitation,
   validateRevokeInvitation,
   validateAcceptInvitation,
+  validateEmailRequest,
   handleValidationErrors
 };
