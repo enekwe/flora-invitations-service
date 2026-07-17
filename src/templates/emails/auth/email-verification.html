@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Your Email - Passbook Flora</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #f9fafb;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .email-header {
+            background: linear-gradient(135deg, #b7046c 0%, #e11d48 100%);
+            color: white;
+            padding: 32px 24px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            background-color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: #1e40af;
+        }
+        
+        .email-content {
+            padding: 32px 24px;
+        }
+        
+        .email-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #111827;
+        }
+        
+        .email-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+        
+        .email-body {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+        
+        .email-body p {
+            margin-bottom: 16px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            margin: 24px 0;
+            transition: transform 0.2s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-1px);
+        }
+        
+        .success-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 16px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .info-box {
+            background-color: #f3f4f6;
+            border-left: 4px solid #b7046c;
+            padding: 16px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .verification-code {
+            background-color: #f0fdf4;
+            border: 2px solid #10b981;
+            padding: 20px;
+            margin: 24px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #059669;
+        }
+        
+        .email-footer {
+            background-color: #f9fafb;
+            padding: 24px;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        .footer-links {
+            margin: 16px 0;
+        }
+        
+        .footer-links a {
+            color: #b7046c;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .email-header,
+            .email-content,
+            .email-footer {
+                padding: 24px 16px;
+            }
+            
+            .email-title {
+                font-size: 20px;
+            }
+            
+            .cta-button {
+                display: block;
+                text-align: center;
+            }
+            
+            .verification-code {
+                font-size: 20px;
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header with Flora Logo and Brand Gradient -->
+        <div class="email-header">
+            <img src="https://flora.passbook.vc/Passbook_Flora_PinkDirt(1).png" alt="Passbook Flora" style="height: 48px; width: auto; margin: 0 auto 16px; display: block;" />
+            <h1 style="font-size: 28px; font-weight: 700; margin: 0;">Passbook Flora</h1>
+            <p style="font-size: 16px; opacity: 0.9; margin: 8px 0 0 0; font-weight: 500;">Venture Studio Operating System</p>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="email-content">
+            <h2 class="email-title">Verify Your Email Address</h2>
+            <p class="email-subtitle">Complete your account setup by verifying your email</p>
+            
+            <div class="email-body">
+                <p>Hi <strong>{{name}}</strong>,</p>
+                
+                <p>Thank you for joining Passbook Flora! To complete your account setup and ensure the security of your account, please verify your email address.</p>
+                
+                <div style="text-align: center; margin: 32px 0;">
+                    <a href="{{verificationLink}}" class="cta-button">Verify Email Address</a>
+                </div>
+                
+                {{#verificationCode}}
+                <p>Alternatively, you can enter this verification code in the application:</p>
+                
+                <div class="verification-code">
+                    {{verificationCode}}
+                </div>
+                {{/verificationCode}}
+                
+                <div class="success-box">
+                    <p><strong>✅ What happens after verification?</strong></p>
+                    <ul style="margin: 8px 0 0 20px;">
+                        <li>Full access to your personalized dashboard</li>
+                        <li>Ability to view fund documents and reports</li>
+                        <li>Receive important fund updates and notifications</li>
+                        <li>Access to secure messaging and support</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <p><strong>⏰ Time Limit:</strong> This verification link will expire in <strong>24 hours</strong> for security purposes.</p>
+                </div>
+                
+                <p>If the button above doesn't work, you can copy and paste the following link into your browser:</p>
+                
+                <div style="background-color: #f9fafb; border: 1px solid #d1d5db; padding: 16px; margin: 16px 0; border-radius: 8px; word-break: break-all; font-size: 14px; color: #4b5563;">
+                    {{verificationLink}}
+                </div>
+                
+                <p><strong>Didn't request this verification?</strong> If you didn't create a Passbook Flora account, you can safely ignore this email. Your email address will not be added to our platform.</p>
+                
+                <p>If you need assistance with verification, our support team is here to help.</p>
+                
+                <p>Welcome to Passbook Flora!</p>
+                
+                <p>Best regards,<br>
+                <strong>The Passbook Flora Team</strong></p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="email-footer">
+            <!-- Quick Links -->
+            <div class="footer-links">
+                <a href="https://flora.passbook.vc">Dashboard</a>
+                <a href="https://flora.passbook.vc/support">Support</a>
+                <a href="https://flora.passbook.vc/privacy">Privacy Policy</a>
+            </div>
+
+            <!-- Passbook Stamp Logo -->
+            <div style="margin: 20px 0;">
+                <img src="https://flora.passbook.vc/passbook-logo.png" alt="Passbook" style="width: 32px; height: 32px; opacity: 0.7; display: block; margin: 0 auto;" />
+            </div>
+
+            <!-- Legal Information -->
+            <div style="margin: 20px 0; line-height: 1.4;">
+                <p style="font-weight: 600; margin-bottom: 8px;">Passbook Media LLC</p>
+                <p>8911 Independence Ave<br>
+                Canoga Park, CA 91304<br>
+                United States</p>
+            </div>
+
+            <!-- Copyright -->
+            <p style="margin: 16px 0;">&copy; 2024 Passbook Media LLC. All rights reserved.</p>
+            <p>Passbook Flora - Venture Studio Operating System</p>
+
+            <!-- Transactional Email Notice (No GDPR) -->
+            <div style="margin-top: 16px; font-size: 12px; color: #9ca3af;">
+                <p>This verification email was sent to <strong>{{email}}</strong>. If you didn't create an account, please ignore this email.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

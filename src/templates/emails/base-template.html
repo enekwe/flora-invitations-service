@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{subject}}</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #f9fafb;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .email-header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 32px 24px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            background-color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: #1e40af;
+        }
+        
+        .email-content {
+            padding: 32px 24px;
+        }
+        
+        .email-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #111827;
+        }
+        
+        .email-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+        
+        .email-body {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+        
+        .email-body p {
+            margin-bottom: 16px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            margin: 24px 0;
+            transition: transform 0.2s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-1px);
+        }
+        
+        .info-box {
+            background-color: #f3f4f6;
+            border-left: 4px solid #3b82f6;
+            padding: 16px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning-box {
+            background-color: #fef3f2;
+            border-left: 4px solid #ef4444;
+            padding: 16px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .success-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 16px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .email-footer {
+            background-color: #f9fafb;
+            padding: 24px;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        .footer-links {
+            margin: 16px 0;
+        }
+        
+        .footer-links a {
+            color: #3b82f6;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            margin: 16px 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 8px;
+            padding: 8px;
+            background-color: #e5e7eb;
+            border-radius: 50%;
+            text-decoration: none;
+            color: #6b7280;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .email-header,
+            .email-content,
+            .email-footer {
+                padding: 24px 16px;
+            }
+            
+            .email-title {
+                font-size: 20px;
+            }
+            
+            .cta-button {
+                display: block;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header with Passbook Logo -->
+        <div class="email-header">
+            <div class="logo">
+                PB
+            </div>
+            <h1 style="font-size: 28px; font-weight: 700; margin: 0;">Passbook Flora</h1>
+            <p style="font-size: 16px; opacity: 0.9; margin: 8px 0 0 0;">Venture Studio OS</p>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="email-content">
+            {{content}}
+        </div>
+        
+        <!-- Footer -->
+        <div class="email-footer">
+            <div class="footer-links">
+                <a href="https://staging.flora.passbook.vc">Dashboard</a>
+                <a href="https://staging.flora.passbook.vc/support">Support</a>
+                <a href="https://passbook.vc">Website</a>
+            </div>
+            
+            <p>&copy; 2024 Passbook Flora. All rights reserved.</p>
+            <p>Professional venture studio operating system and investor relations platform.</p>
+            
+            <div style="margin-top: 16px; font-size: 12px; color: #9ca3af;">
+                <p>This email was sent to {{email}}. If you no longer wish to receive these emails, you can <a href="{{unsubscribeLink}}" style="color: #3b82f6;">unsubscribe here</a>.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

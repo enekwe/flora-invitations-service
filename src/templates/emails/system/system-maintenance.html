@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduled Maintenance - Passbook Flora</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #f9fafb;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .email-header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 32px 24px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            background-color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: #1e40af;
+        }
+        
+        .email-content {
+            padding: 32px 24px;
+        }
+        
+        .email-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #111827;
+        }
+        
+        .email-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+        
+        .email-body {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+        
+        .email-body p {
+            margin-bottom: 16px;
+        }
+        
+        .maintenance-card {
+            background: linear-gradient(135deg, #fef3f2 0%, #fee2e2 100%);
+            border: 2px solid #f87171;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        
+        .maintenance-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            background-color: #fca5a5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+        
+        .maintenance-time {
+            font-size: 20px;
+            font-weight: 700;
+            color: #dc2626;
+            margin-bottom: 8px;
+        }
+        
+        .maintenance-duration {
+            font-size: 14px;
+            color: #7f1d1d;
+            font-weight: 600;
+        }
+        
+        .timeline-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .timeline-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #dbeafe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-size: 14px;
+        }
+        
+        .timeline-content h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+        
+        .timeline-content p {
+            font-size: 14px;
+            color: #6b7280;
+            margin: 0;
+        }
+        
+        .info-box {
+            background-color: #f3f4f6;
+            border-left: 4px solid #3b82f6;
+            padding: 16px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning-box {
+            background-color: #fef3f2;
+            border-left: 4px solid #ef4444;
+            padding: 16px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .email-footer {
+            background-color: #f9fafb;
+            padding: 24px;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        .footer-links {
+            margin: 16px 0;
+        }
+        
+        .footer-links a {
+            color: #3b82f6;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .email-header,
+            .email-content,
+            .email-footer {
+                padding: 24px 16px;
+            }
+            
+            .email-title {
+                font-size: 20px;
+            }
+            
+            .maintenance-time {
+                font-size: 18px;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .timeline-icon {
+                margin: 0 0 12px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header with Passbook Logo -->
+        <div class="email-header">
+            <div class="logo">
+                PB
+            </div>
+            <h1 style="font-size: 28px; font-weight: 700; margin: 0;">Passbook Flora</h1>
+            <p style="font-size: 16px; opacity: 0.9; margin: 8px 0 0 0;">Fund Management Platform</p>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="email-content">
+            <h2 class="email-title">🔧 Scheduled System Maintenance</h2>
+            <p class="email-subtitle">Temporary service interruption notice</p>
+            
+            <div class="email-body">
+                <p>Dear <strong>{{name}}</strong>,</p>
+                
+                <p>We're writing to inform you about scheduled maintenance on the Passbook Flora platform. This maintenance is necessary to improve system performance, security, and to deploy new features.</p>
+                
+                <div class="maintenance-card">
+                    <div class="maintenance-icon">⚠️</div>
+                    <div class="maintenance-time">{{maintenanceDate}} at {{maintenanceTime}}</div>
+                    <div class="maintenance-duration">Expected Duration: {{duration}}</div>
+                </div>
+                
+                <div class="warning-box">
+                    <p><strong>🚨 Service Interruption:</strong> During this maintenance window, the Passbook Flora platform will be temporarily unavailable. You will not be able to access your dashboard, documents, or any platform features.</p>
+                </div>
+                
+                <h3 style="font-size: 18px; font-weight: 600; margin: 24px 0 16px 0; color: #111827;">Maintenance Timeline:</h3>
+                
+                <div class="timeline-box">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🕐</div>
+                        <div class="timeline-content">
+                            <h4>{{startTime}} - Maintenance Begins</h4>
+                            <p>Platform access will be disabled and maintenance mode activated</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">⚙️</div>
+                        <div class="timeline-content">
+                            <h4>{{startTime}} - {{endTime}} - System Updates</h4>
+                            <p>{{maintenanceDescription}}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">✅</div>
+                        <div class="timeline-content">
+                            <h4>{{endTime}} - Service Restoration</h4>
+                            <p>Platform will be fully operational with enhanced features</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <p><strong>🎯 What's Being Updated:</strong></p>
+                    <ul style="margin: 8px 0 0 20px;">
+                        {{#features}}
+                        <li>{{.}}</li>
+                        {{/features}}
+                        {{^features}}
+                        <li>System security enhancements</li>
+                        <li>Performance optimizations</li>
+                        <li>Database maintenance</li>
+                        <li>New feature deployments</li>
+                        {{/features}}
+                    </ul>
+                </div>
+                
+                <h3 style="font-size: 18px; font-weight: 600; margin: 24px 0 16px 0; color: #111827;">What You Need to Know:</h3>
+                
+                <ul style="margin: 16px 0 24px 20px; color: #4b5563;">
+                    <li><strong>Save Your Work:</strong> If you're currently working in the platform, please save any changes before the maintenance window</li>
+                    <li><strong>Plan Accordingly:</strong> Schedule any urgent tasks outside the maintenance window</li>
+                    <li><strong>Mobile App:</strong> The mobile app will also be unavailable during this time</li>
+                    <li><strong>Data Safety:</strong> All your data is secure and will remain intact during maintenance</li>
+                    <li><strong>Email Notifications:</strong> You'll receive email confirmations when maintenance begins and ends</li>
+                </ul>
+                
+                {{#emergencyContact}}
+                <div style="background-color: #f0fdf4; border-left: 4px solid #10b981; padding: 16px; margin: 24px 0; border-radius: 0 8px 8px 0;">
+                    <p><strong>🆘 Emergency Contact:</strong> If you have urgent matters that cannot wait, please contact:</p>
+                    <p style="margin-top: 8px;">
+                        <strong>{{emergencyContact.name}}</strong><br>
+                        Email: {{emergencyContact.email}}<br>
+                        Phone: {{emergencyContact.phone}}
+                    </p>
+                </div>
+                {{/emergencyContact}}
+                
+                <p>We apologize for any inconvenience this may cause and appreciate your patience as we work to improve your experience with Passbook Flora.</p>
+                
+                <p>If you have any questions about this maintenance, please don't hesitate to contact our support team before the maintenance window begins.</p>
+                
+                <p>Thank you for your understanding.</p>
+                
+                <p>Best regards,<br>
+                <strong>The Passbook Flora Technical Team</strong></p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="email-footer">
+            <div class="footer-links">
+                <a href="https://staging.flora.passbook.vc/support">Support</a>
+                <a href="https://passbook.vc/status">System Status</a>
+                <a href="https://passbook.vc">Website</a>
+            </div>
+            
+            <p>&copy; 2024 Passbook Flora. All rights reserved.</p>
+            <p>Professional fund management and investor relations platform.</p>
+            
+            <div style="margin-top: 16px; font-size: 12px; color: #9ca3af;">
+                <p>This maintenance notice was sent to {{email}}. You will receive updates when maintenance begins and ends.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

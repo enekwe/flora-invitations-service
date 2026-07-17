@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capital Call Notice - Passbook Flora</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #f9fafb;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .email-header {
+            background: linear-gradient(135deg, #b7046c 0%, #e11d48 100%);
+            color: white;
+            padding: 32px 24px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            background-color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: #1e40af;
+        }
+        
+        .email-content {
+            padding: 32px 24px;
+        }
+        
+        .email-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #111827;
+        }
+        
+        .email-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+        
+        .email-body {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+        
+        .email-body p {
+            margin-bottom: 16px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #b7046c 0%, #e11d48 100%);
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            margin: 24px 0;
+            transition: transform 0.2s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-1px);
+        }
+        
+        .capital-call-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        
+        .call-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .call-amount {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0369a1;
+            margin-bottom: 8px;
+        }
+        
+        .call-label {
+            font-size: 14px;
+            color: #0369a1;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .call-details {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .detail-value {
+            color: #6b7280;
+            font-weight: 500;
+        }
+        
+        .important-box {
+            background-color: #fef3f2;
+            border-left: 4px solid #ef4444;
+            padding: 16px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .info-box {
+            background-color: #f3f4f6;
+            border-left: 4px solid #b7046c;
+            padding: 16px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .due-date-badge {
+            display: inline-block;
+            background-color: #fee2e2;
+            color: #dc2626;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .fund-badge {
+            display: inline-block;
+            background-color: #fce7f3;
+            color: #b7046c;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .email-footer {
+            background-color: #f9fafb;
+            padding: 24px;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        .footer-links {
+            margin: 16px 0;
+        }
+        
+        .footer-links a {
+            color: #b7046c;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .email-header,
+            .email-content,
+            .email-footer {
+                padding: 24px 16px;
+            }
+            
+            .email-title {
+                font-size: 20px;
+            }
+            
+            .cta-button {
+                display: block;
+                text-align: center;
+            }
+            
+            .call-amount {
+                font-size: 28px;
+            }
+            
+            .detail-row {
+                flex-direction: column;
+                padding: 8px 0;
+            }
+            
+            .detail-value {
+                margin-top: 4px;
+                font-weight: 600;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header with Flora Logo and Brand Gradient -->
+        <div class="email-header">
+            <img src="https://flora.passbook.vc/Passbook_Flora_PinkDirt(1).png" alt="Passbook Flora" style="height: 48px; width: auto; margin: 0 auto 16px; display: block;" />
+            <h1 style="font-size: 28px; font-weight: 700; margin: 0;">Passbook Flora</h1>
+            <p style="font-size: 16px; opacity: 0.9; margin: 8px 0 0 0; font-weight: 500;">Venture Studio Operating System</p>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="email-content">
+            <h2 class="email-title">💰 Capital Call Notice</h2>
+            <p class="email-subtitle">Action required: Capital contribution for <span class="fund-badge">{{fundName}}</span></p>
+            
+            <div class="email-body">
+                <p>Dear <strong>{{name}}</strong>,</p>
+                
+                <p>This is an official notice that a capital call has been issued for your investment in <strong>{{fundName}}</strong>. Your contribution is required to fund new investment opportunities.</p>
+                
+                <div class="capital-call-card">
+                    <div class="call-header">
+                        <div class="call-amount">${{callAmount}}</div>
+                        <div class="call-label">Capital Call Amount</div>
+                    </div>
+                    
+                    <div class="call-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Fund:</span>
+                            <span class="detail-value">{{fundName}}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Call Number:</span>
+                            <span class="detail-value">{{callNumber}}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Your Commitment:</span>
+                            <span class="detail-value">${{totalCommitment}}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Your Share:</span>
+                            <span class="detail-value">{{ownershipPercentage}}%</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Due Date:</span>
+                            <span class="detail-value"><span class="due-date-badge">{{dueDate}}</span></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Purpose:</span>
+                            <span class="detail-value">{{callPurpose}}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin: 32px 0;">
+                    <a href="{{callDetailsLink}}" class="cta-button">View Capital Call Details</a>
+                </div>
+                
+                <div class="important-box">
+                    <p><strong>⚠️ IMPORTANT:</strong> This capital call is due on <strong>{{dueDate}}</strong>. Late payments may be subject to penalties as outlined in your subscription agreement.</p>
+                </div>
+                
+                <div class="info-box">
+                    <p><strong>📋 Next Steps:</strong></p>
+                    <ol style="margin: 8px 0 0 20px;">
+                        <li>Review the detailed capital call notice</li>
+                        <li>Verify your bank transfer information</li>
+                        <li>Initiate wire transfer by the due date</li>
+                        <li>Confirm receipt with fund administrator</li>
+                    </ol>
+                </div>
+                
+                <h3 style="font-size: 18px; font-weight: 600; margin: 24px 0 12px 0; color: #111827;">Wire Transfer Instructions:</h3>
+                
+                <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 16px 0;">
+                    <div class="detail-row">
+                        <span class="detail-label">Bank Name:</span>
+                        <span class="detail-value">{{bankName}}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Account Name:</span>
+                        <span class="detail-value">{{accountName}}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Account Number:</span>
+                        <span class="detail-value">{{accountNumber}}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Routing Number:</span>
+                        <span class="detail-value">{{routingNumber}}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Reference:</span>
+                        <span class="detail-value">{{wireReference}}</span>
+                    </div>
+                </div>
+                
+                <div style="background-color: #f0fdf4; border-left: 4px solid #10b981; padding: 16px; margin: 24px 0; border-radius: 0 8px 8px 0;">
+                    <p><strong>📞 Questions?</strong> Contact our fund administration team:</p>
+                    <ul style="margin: 8px 0 0 20px;">
+                        <li>Email: {{adminEmail}}</li>
+                        <li>Phone: {{adminPhone}}</li>
+                        <li>Portal: Use the support section in your dashboard</li>
+                    </ul>
+                </div>
+                
+                <p>Thank you for your continued investment and partnership.</p>
+                
+                <p>Sincerely,<br>
+                <strong>{{fundManagerName}}</strong><br>
+                <em>Fund Administrator</em><br>
+                Passbook Flora</p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="email-footer">
+            <!-- Quick Links -->
+            <div class="footer-links">
+                <a href="{{callDetailsLink}}">Capital Call Details</a>
+                <a href="https://flora.passbook.vc/capital-calls">All Capital Calls</a>
+                <a href="https://flora.passbook.vc/support">Support</a>
+            </div>
+
+            <!-- Passbook Stamp Logo -->
+            <div style="margin: 20px 0;">
+                <img src="https://flora.passbook.vc/passbook-logo.png" alt="Passbook" style="width: 32px; height: 32px; opacity: 0.7; display: block; margin: 0 auto;" />
+            </div>
+
+            <!-- Legal Information -->
+            <div style="margin: 20px 0; line-height: 1.4;">
+                <p style="font-weight: 600; margin-bottom: 8px;">Passbook Media LLC</p>
+                <p>8911 Independence Ave<br>
+                Canoga Park, CA 91304<br>
+                United States</p>
+            </div>
+
+            <!-- Copyright -->
+            <p style="margin: 16px 0;">&copy; 2024 Passbook Media LLC. All rights reserved.</p>
+            <p>Passbook Flora - Venture Studio Operating System</p>
+
+            <!-- Legal Notice (No Unsubscribe) -->
+            <div style="margin-top: 16px; font-size: 12px; color: #9ca3af;">
+                <p>This capital call notice was sent to <strong>{{email}}</strong>. This is a legally binding notice. Please retain for your records.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

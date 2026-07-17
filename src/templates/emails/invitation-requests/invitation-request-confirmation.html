@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation Request Received - Passbook Flora</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #f9fafb;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .email-header {
+            background: linear-gradient(135deg, #b7046c 0%, #e11d48 100%);
+            color: white;
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        .email-content {
+            padding: 32px 24px;
+        }
+
+        .email-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #111827;
+        }
+
+        .email-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+
+        .email-body {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .email-body p {
+            margin-bottom: 16px;
+        }
+
+        .success-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .info-box {
+            background-color: #fefce8;
+            border-left: 4px solid #eab308;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .role-box {
+            background-color: #fce7f3;
+            border: 1px solid #fbcfe8;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .role-badge {
+            display: inline-block;
+            background-color: #fce7f3;
+            color: #b7046c;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .email-footer {
+            background-color: #f9fafb;
+            padding: 24px;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .footer-links {
+            margin: 16px 0;
+        }
+
+        .footer-links a {
+            color: #b7046c;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .email-header,
+            .email-content,
+            .email-footer {
+                padding: 24px 16px;
+            }
+
+            .email-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header with Flora Logo and Brand Gradient -->
+        <div class="email-header">
+            <img src="https://flora.passbook.vc/Passbook_Flora_PinkDirt(1).png" alt="Passbook Flora" style="height: 48px; width: auto; margin: 0 auto 16px; display: block;" />
+            <h1 style="margin: 0; font-size: 24px; font-weight: 600;">Request Received</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.9; font-weight: 500;">Venture Studio Operating System</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="email-content">
+            <h2 class="email-title" style="color: #b7046c;">Thank you, {{name}}!</h2>
+
+            <div class="email-body">
+                <p style="font-size: 16px; line-height: 1.6; color: #374151;">
+                    We've successfully received your invitation request to join the Passbook Flora platform.
+                </p>
+
+                <!-- Request Summary -->
+                <div class="success-box">
+                    <h3 style="margin-top: 0; color: #1f2937;">Your Request Summary</h3>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr>
+                            <td style="padding: 8px 0; font-weight: 600; color: #374151; width: 140px;">Email Address:</td>
+                            <td style="padding: 8px 0; color: #1f2937;">{{email}}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; font-weight: 600; color: #374151;">Requested Role:</td>
+                            <td style="padding: 8px 0; color: #1f2937;">
+                                <span class="role-badge">{{role}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; font-weight: 600; color: #374151;">Request Date:</td>
+                            <td style="padding: 8px 0; color: #1f2937;">{{requestDate}}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; font-weight: 600; color: #374151;">Request ID:</td>
+                            <td style="padding: 8px 0; color: #6b7280; font-family: monospace;">{{requestId}}</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- What's Next -->
+                <div class="info-box">
+                    <h3 style="margin-top: 0; color: #1f2937;">What happens next?</h3>
+                    <ul style="margin: 0; padding-left: 20px; color: #374151; line-height: 1.6;">
+                        <li>Our team will review your request</li>
+                        <li>You'll receive an email notification with our decision</li>
+                        <li>If approved, you'll get account setup instructions</li>
+                        <li>Response time is typically within 3-5 business days</li>
+                    </ul>
+                </div>
+
+                <!-- Role Information -->
+                <div class="role-box">
+                    <h3 style="margin-top: 0; color: #b7046c; font-size: 16px;">About Your Requested Role</h3>
+                    <p style="margin: 0; font-size: 14px; color: #374151;">
+                        <strong>{{role}}:</strong> {{roleDescription}}
+                    </p>
+                </div>
+
+                <!-- Contact Information -->
+                <div style="text-align: center; margin: 30px 0;">
+                    <p style="color: #6b7280; font-size: 14px;">
+                        Questions about your request? Contact us at
+                        <a href="mailto:flora@passbook.vc" style="color: #b7046c; text-decoration: none;">flora@passbook.vc</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="email-footer">
+            <!-- Quick Links -->
+            <div class="footer-links">
+                <a href="https://flora.passbook.vc">Dashboard</a>
+                <a href="https://flora.passbook.vc/support">Support</a>
+                <a href="https://flora.passbook.vc/privacy">Privacy Policy</a>
+                <a href="https://flora.passbook.vc/tos">Terms of Service</a>
+            </div>
+
+            <!-- Passbook Stamp Logo -->
+            <div style="margin: 20px 0;">
+                <img src="https://flora.passbook.vc/passbook-logo.png" alt="Passbook" style="width: 32px; height: 32px; opacity: 0.7; display: block; margin: 0 auto;" />
+            </div>
+
+            <!-- Legal Information -->
+            <div style="margin: 20px 0; line-height: 1.4;">
+                <p style="font-weight: 600; margin-bottom: 8px;">Passbook Media LLC</p>
+                <p>8911 Independence Ave<br>
+                Canoga Park, CA 91304<br>
+                United States</p>
+            </div>
+
+            <!-- Copyright -->
+            <p style="margin: 16px 0;">&copy; 2024 Passbook Media LLC. All rights reserved.</p>
+            <p>Passbook Flora - Venture Studio Operating System</p>
+
+            <!-- GDPR Compliance Section -->
+            <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #9ca3af;">
+                <p>This confirmation email was sent to <strong>{{email}}</strong> because you submitted an invitation request to Passbook Flora.</p>
+
+                <!-- Unsubscribe Link -->
+                <p style="margin-top: 12px;">
+                    If you no longer wish to receive emails from Passbook Flora, you can
+                    <a href="{{unsubscribeLink}}" style="color: #b7046c; text-decoration: underline;">unsubscribe here</a>.
+                </p>
+
+                <!-- GDPR Rights Information -->
+                <p style="margin-top: 12px;">
+                    In accordance with GDPR regulations, you have the right to access, rectify, or delete your personal data.
+                    To exercise these rights or for any privacy-related inquiries, please contact our Data Protection Officer at
+                    <a href="mailto:privacy@passbook.vc" style="color: #b7046c;">privacy@passbook.vc</a>.
+                </p>
+
+                <!-- Data Processing Notice -->
+                <p style="margin-top: 12px;">
+                    We process your personal data based on legitimate interest to facilitate platform access requests.
+                    Your data is stored securely and will be deleted if the request is denied or expires unused.
+                    For more information, see our <a href="https://flora.passbook.vc/privacy" style="color: #b7046c;">Privacy Policy</a>
+                    and <a href="https://flora.passbook.vc/tos" style="color: #b7046c;">Terms of Service</a>.
+                </p>
+
+                <!-- Contact for Errors -->
+                <p style="margin-top: 12px;">
+                    If you believe you received this email in error, please contact our support team at
+                    <a href="mailto:support@passbook.vc" style="color: #b7046c;">support@passbook.vc</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

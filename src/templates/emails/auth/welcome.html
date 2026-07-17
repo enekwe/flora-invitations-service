@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Passbook Flora!</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #f9fafb;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .email-header {
+            background: linear-gradient(135deg, #b7046c 0%, #e11d48 100%);
+            color: white;
+            padding: 32px 24px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            background-color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: #1e40af;
+        }
+        
+        .email-content {
+            padding: 32px 24px;
+        }
+        
+        .email-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #111827;
+        }
+        
+        .email-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+        
+        .email-body {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+        
+        .email-body p {
+            margin-bottom: 16px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #b7046c 0%, #e11d48 100%);
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            margin: 24px 0;
+            transition: transform 0.2s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-1px);
+        }
+        
+        .success-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 16px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        
+        .feature-card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 12px;
+            background-color: #dbeafe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        
+        .role-badge {
+            display: inline-block;
+            background-color: #fce7f3;
+            color: #b7046c;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0 4px;
+        }
+        
+        .email-footer {
+            background-color: #f9fafb;
+            padding: 24px;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        .footer-links {
+            margin: 16px 0;
+        }
+        
+        .footer-links a {
+            color: #b7046c;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .email-header,
+            .email-content,
+            .email-footer {
+                padding: 24px 16px;
+            }
+            
+            .email-title {
+                font-size: 20px;
+            }
+            
+            .cta-button {
+                display: block;
+                text-align: center;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header with Flora Logo and Brand Gradient -->
+        <div class="email-header">
+            <img src="https://flora.passbook.vc/Passbook_Flora_PinkDirt(1).png" alt="Passbook Flora" style="height: 48px; width: auto; margin: 0 auto 16px; display: block;" />
+            <h1 style="font-size: 28px; font-weight: 700; margin: 0;">Welcome to Passbook Flora!</h1>
+            <p style="font-size: 16px; opacity: 0.9; margin: 8px 0 0 0; font-weight: 500;">Venture Studio Operating System</p>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="email-content">
+            <h2 class="email-title">🎉 Welcome to Passbook Flora!</h2>
+            <p class="email-subtitle">Your account is now active and ready to use</p>
+            
+            <div class="email-body">
+                <p>Hi <strong>{{name}}</strong>,</p>
+                
+                <p>Congratulations! Your Passbook Flora account has been successfully set up. You now have access to our comprehensive fund management platform as a <span class="role-badge">{{role}}</span>.</p>
+                
+                <div class="success-box">
+                    <p><strong>🚀 Your account is ready!</strong> You can now access all the features available to your role and start managing your investment portfolio.</p>
+                </div>
+                
+                <div style="text-align: center; margin: 32px 0;">
+                    <a href="{{dashboardLink}}" class="cta-button">Access Your Dashboard</a>
+                </div>
+                
+                <h3 style="font-size: 20px; font-weight: 600; margin: 24px 0 16px 0; color: #111827;">What you can do now:</h3>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h4 style="font-weight: 600; margin-bottom: 8px;">Portfolio Overview</h4>
+                        <p style="font-size: 14px; color: #6b7280;">View your investment performance, fund allocations, and key metrics.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📄</div>
+                        <h4 style="font-weight: 600; margin-bottom: 8px;">Document Library</h4>
+                        <p style="font-size: 14px; color: #6b7280;">Access quarterly reports, statements, and important fund documents.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h4 style="font-weight: 600; margin-bottom: 8px;">Capital Account</h4>
+                        <p style="font-size: 14px; color: #6b7280;">Track capital calls, distributions, and account activity.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔔</div>
+                        <h4 style="font-weight: 600; margin-bottom: 8px;">Notifications</h4>
+                        <p style="font-size: 14px; color: #6b7280;">Stay updated with fund news, document uploads, and important announcements.</p>
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 18px; font-weight: 600; margin: 32px 0 16px 0; color: #111827;">Getting Started Tips:</h3>
+                
+                <ul style="margin: 16px 0 0 20px; color: #4b5563;">
+                    <li style="margin-bottom: 8px;"><strong>Complete Your Profile:</strong> Add your contact information and preferences in Settings</li>
+                    <li style="margin-bottom: 8px;"><strong>Enable Notifications:</strong> Choose how you'd like to receive updates about your investments</li>
+                    <li style="margin-bottom: 8px;"><strong>Explore Your Dashboard:</strong> Familiarize yourself with the various sections and reports</li>
+                    <li style="margin-bottom: 8px;"><strong>Set Up Security:</strong> Consider enabling two-factor authentication for enhanced security</li>
+                </ul>
+                
+                <div style="background-color: #f3f4f6; border-left: 4px solid #b7046c; padding: 16px; margin: 24px 0; border-radius: 0 8px 8px 0;">
+                    <p><strong>Need Help?</strong></p>
+                    <p>Our support team is here to assist you. You can:</p>
+                    <ul style="margin: 8px 0 0 20px;">
+                        <li>Visit our Help Center in the dashboard</li>
+                        <li>Contact support directly through the platform</li>
+                        <li>Reply to this email with any questions</li>
+                    </ul>
+                </div>
+                
+                <p>We're excited to have you as part of the Passbook Flora community and look forward to supporting your investment journey.</p>
+                
+                <p>Welcome aboard!</p>
+                
+                <p>Best regards,<br>
+                <strong>The Passbook Flora Team</strong></p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="email-footer">
+            <!-- Quick Links -->
+            <div class="footer-links">
+                <a href="{{dashboardLink}}">Dashboard</a>
+                <a href="https://flora.passbook.vc/support">Support</a>
+                <a href="https://flora.passbook.vc/privacy">Privacy Policy</a>
+                <a href="https://flora.passbook.vc/tos">Terms of Service</a>
+            </div>
+
+            <!-- Passbook Stamp Logo -->
+            <div style="margin: 20px 0;">
+                <img src="https://flora.passbook.vc/passbook-logo.png" alt="Passbook" style="width: 32px; height: 32px; opacity: 0.7; display: block; margin: 0 auto;" />
+            </div>
+
+            <!-- Legal Information -->
+            <div style="margin: 20px 0; line-height: 1.4;">
+                <p style="font-weight: 600; margin-bottom: 8px;">Passbook Media LLC</p>
+                <p>8911 Independence Ave<br>
+                Canoga Park, CA 91304<br>
+                United States</p>
+            </div>
+
+            <!-- Copyright -->
+            <p style="margin: 16px 0;">&copy; 2024 Passbook Media LLC. All rights reserved.</p>
+            <p>Passbook Flora - Venture Studio Operating System</p>
+
+            <!-- Light GDPR Compliance Section -->
+            <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #9ca3af;">
+                <p>This welcome email was sent to <strong>{{email}}</strong>.</p>
+
+                <p style="margin-top: 12px;">
+                    You can manage your email preferences in your dashboard settings.
+                    For privacy-related inquiries, contact
+                    <a href="mailto:privacy@passbook.vc" style="color: #b7046c;">privacy@passbook.vc</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

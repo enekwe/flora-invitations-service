@@ -13,6 +13,11 @@ const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 
 // Routes
 const invitationsRoutes = require('./routes/v1/invitations');
+const authEmailsRoutes = require('./routes/v1/auth-emails');
+const capitalCallEmailsRoutes = require('./routes/v1/capital-call-emails');
+const documentEmailsRoutes = require('./routes/v1/document-emails');
+const invitationRequestEmailsRoutes = require('./routes/v1/invitation-request-emails');
+const systemEmailsRoutes = require('./routes/v1/system-emails');
 
 /**
  * Flora Invitations Microservice
@@ -80,17 +85,18 @@ app.get('/health', async (req, res) => {
 
     res.json({
       success: true,
-      service: 'flora-invitations-service',
-      version: '1.0.0',
+      service: 'flora-email-service',
+      version: '2.0.0',
       timestamp: new Date().toISOString(),
       uptime: process.uptime(),
       database: dbStatus,
-      environment: process.env.NODE_ENV || 'development'
+      environment: process.env.NODE_ENV || 'development',
+      emailTypes: ['invitations', 'auth', 'capital-calls', 'documents', 'invitation-requests', 'system']
     });
   } catch (error) {
     res.status(503).json({
       success: false,
-      service: 'flora-invitations-service',
+      service: 'flora-email-service',
       error: 'Service unhealthy'
     });
   }
@@ -98,6 +104,11 @@ app.get('/health', async (req, res) => {
 
 // API routes
 app.use('/api/v1/invitations', invitationsRoutes);
+app.use('/api/v1/emails/auth', authEmailsRoutes);
+app.use('/api/v1/emails/capital-calls', capitalCallEmailsRoutes);
+app.use('/api/v1/emails/documents', documentEmailsRoutes);
+app.use('/api/v1/emails/invitation-requests', invitationRequestEmailsRoutes);
+app.use('/api/v1/emails/system', systemEmailsRoutes);
 
 // 404 handler
 app.use(notFoundHandler);

@@ -1,7 +1,7 @@
 {
-  "name": "flora-invitations-service",
-  "version": "1.0.0",
-  "description": "Flora Invitations Microservice - Manages platform invitations with sender context and email delivery",
+  "name": "flora-email-service",
+  "version": "2.0.0",
+  "description": "Flora Email Service - Comprehensive email microservice handling all email types: invitations, auth, capital calls, documents, invitation requests, and system notifications",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
@@ -12,10 +12,14 @@
   },
   "keywords": [
     "flora",
-    "invitations",
+    "email",
     "microservice",
     "brevo",
-    "email"
+    "invitations",
+    "capital-calls",
+    "documents",
+    "auth-emails",
+    "notifications"
   ],
   "author": "Passbook Development Team",
   "license": "UNLICENSED",
