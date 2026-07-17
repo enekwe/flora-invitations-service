@@ -107,22 +107,34 @@ app.use(errorHandler);
 
 /**
  * Start server
+ * IMPORTANT: Start HTTP server FIRST, then connect to database
+ * This ensures health checks pass even if database is temporarily unavailable
  */
 const startServer = async () => {
   try {
-    // Connect to database
-    await connectDB();
-
-    // Start Express server
-    app.listen(PORT, () => {
+    // Start Express server FIRST (before database connection)
+    // This allows health endpoint to respond even if DB is down
+    const server = app.listen(PORT, () => {
       logger.info(`Flora Invitations Service started`, {
         port: PORT,
         env: process.env.NODE_ENV || 'development',
-        nodeVersion: process.version
+        nodeVersion: process.version,
+        healthCheck: '/health'
       });
     });
+
+    // Connect to database AFTER server is running
+    // Database retries will happen in background without blocking server
+    connectDB().catch(error => {
+      logger.error('Database connection failed, but server continues running', {
+        error: error.message
+      });
+      // Server stays alive - database retries will continue
+    });
+
+    return server;
   } catch (error) {
-    logger.error('Failed to start server', {
+    logger.error('Failed to start HTTP server', {
       error: error.message,
       stack: error.stack
     });
