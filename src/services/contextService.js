@@ -196,10 +196,10 @@ class ContextService {
 
     try {
       const response = await axios.get(
-        `${this.mainAppApiUrl}/api/v1/users/${userId}`,
+        `${this.mainAppApiUrl}/api/v1/internal/users/${userId}`,
         {
           headers: {
-            'Authorization': `Bearer ${this.mainAppApiKey}`,
+            'x-api-key': this.mainAppApiKey,
             'Content-Type': 'application/json'
           },
           timeout: 10000
@@ -231,10 +231,10 @@ class ContextService {
 
     try {
       const response = await axios.get(
-        `${this.mainAppApiUrl}/api/v1/funds/${fundId}`,
+        `${this.mainAppApiUrl}/api/v1/internal/context/fund/${fundId}`,
         {
           headers: {
-            'Authorization': `Bearer ${this.mainAppApiKey}`,
+            'x-api-key': this.mainAppApiKey,
             'Content-Type': 'application/json'
           },
           timeout: 10000
@@ -266,10 +266,10 @@ class ContextService {
 
     try {
       const response = await axios.get(
-        `${this.mainAppApiUrl}/api/v1/stakeholders/user/${userId}`,
+        `${this.mainAppApiUrl}/api/v1/internal/context/lp/${userId}`,
         {
           headers: {
-            'Authorization': `Bearer ${this.mainAppApiKey}`,
+            'x-api-key': this.mainAppApiKey,
             'Content-Type': 'application/json'
           },
           timeout: 10000
@@ -301,10 +301,10 @@ class ContextService {
 
     try {
       const response = await axios.get(
-        `${this.mainAppApiUrl}/api/v1/studio/companies/${companyId}`,
+        `${this.mainAppApiUrl}/api/v1/internal/context/company/${companyId}`,
         {
           headers: {
-            'Authorization': `Bearer ${this.mainAppApiKey}`,
+            'x-api-key': this.mainAppApiKey,
             'Content-Type': 'application/json'
           },
           timeout: 10000
