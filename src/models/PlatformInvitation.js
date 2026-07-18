@@ -323,12 +323,19 @@ PlatformInvitationSchema.methods.expire = async function() {
 
 // Instance method: resend — generate new token, reset expiry, set status to pending
 PlatformInvitationSchema.methods.resend = async function(resentBy) {
-  if (this.status !== 'sent' && this.status !== 'expired') {
-    throw new Error(`Cannot resend invitation with status: ${this.status}. Can only resend sent or expired invitations.`);
+  if (this.status === 'accepted') {
+    throw new Error(`Cannot resend invitation with status: ${this.status}. Invitation has already been accepted.`);
   }
 
+  if (this.status === 'revoked') {
+    throw new Error(`Cannot resend invitation with status: ${this.status}. Invitation has been revoked.`);
+  }
+
+  // Generate new token for security
   this.token = crypto.randomBytes(32).toString('hex');
   this.tokenExpiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+
+  // Keep status as pending (or set to pending if it was expired/sent)
   this.status = 'pending';
 
   this.auditLogs.push({
